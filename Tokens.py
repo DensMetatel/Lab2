@@ -4,7 +4,7 @@ import re
 Patterns = re.compile(
     r"""
     (?P<NUMBER>-?\d+(\.\d+)?)               |
-(?P<OPERATORS>\*\*|//|\+|-|\^|/|%|\*|=)     |
+    (?P<OPERATOR>\*\*|//|\+|-|/|%|\*|=)  |
     (?P<LEFT_BRACKET>\()                    |
     (?P<RIGHT_BRACKET>\))                   |
     (?P<CONSTANT>pi|exp)                    |
