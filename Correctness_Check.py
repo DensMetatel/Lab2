@@ -33,7 +33,7 @@ def correct_expression(tokens):
     if left_and_right_count != 0:
         return False, "Нарушен баланс скобок!"
 
-    if tokens[-1][0] == "OPERATORS" and tokens[-1][1] != "=":
+    if tokens[-1][0] == "OPERATOR" and tokens[-1][1] != "=":
         return False, "Выражение не может заканчиваться оператором!"
 
     return True, 'Выражение "синтаксически" корректно'
