@@ -1,5 +1,6 @@
 from Tokens import tokenize
 from Reading import user_input, web_page_by_url, load_file
+from Correctness_Check import correct_expression
 
 print("Выберите в каком формате работать с данными:\n"
       "\t1 - Ввод с клавиатуры\n"
@@ -25,3 +26,6 @@ if text:
     tokens = tokenize(text)
     for token_type, value in tokens:
         print(f"{token_type:20} -> {value}")
+
+    correct, message = correct_expression(tokens)
+    print(message)
