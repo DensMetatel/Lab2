@@ -4,10 +4,10 @@ import re
 Patterns = re.compile(
     r"""
     (?P<NUMBER>-?\d+(\.\d+)?)               |
-    (?P<OPERATOR>\+|-|\*|/|//|%|\^|=)      |
+(?P<OPERATORS>\*\*|//|\+|-|\^|/|%|\*|=)     |
     (?P<LEFT_BRACKET>\()                    |
     (?P<RIGHT_BRACKET>\))                   |
-    (?P<CONSTANT>pi|exp)                      |
+    (?P<CONSTANT>pi|exp)                    |
     (?P<VARIABLE>[a-zA-Z_]\w*)
     """, re.VERBOSE
 )

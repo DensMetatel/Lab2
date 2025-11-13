@@ -25,7 +25,7 @@ def correct_expression(tokens):
         if last_type:
             if last_type == "NUMBER" and token_type == "NUMBER":
                 return False, "Отсутствует оператор между числами!"
-            if last_type == "OPERATORS" and token_type == "OPERATORS" and value != "=":
+            if last_type == "OPERATOR" and token_type == "OPERATOR" and value != "=":
                 return False, "Два оператора подряд!"
 
         last_type = token_type
@@ -34,6 +34,6 @@ def correct_expression(tokens):
         return False, "Нарушен баланс скобок!"
 
     if tokens[-1][0] == "OPERATORS" and tokens[-1][1] != "=":
-        return False, "Ошибка: выражение не может заканчиваться оператором!"
+        return False, "Выражение не может заканчиваться оператором!"
 
-    return True, "Выражение корректно"
+    return True, 'Выражение "синтаксически" корректно'
