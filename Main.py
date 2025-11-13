@@ -1,31 +1,36 @@
 from Tokens import tokenize
-from Reading import user_input, web_page_by_url, load_file
+from Reading import user_input, load_file
 from Correctness_Check import correct_expression
 
-print("Выберите в каком формате работать с данными:\n"
+def main():
+    print("Выберите в каком формате работать с данными:\n"
       "\t1 - Ввод с клавиатуры\n"
-      "\t2 - Web-страница\n"
-      "\t3 - Загруженный файл")
+      "\t2 - Загруженный файл")
 
-num = input("Введите номер формата: ")
+    num = input("Введите номер формата: ")
+    text = ""
 
-match num:
-    case '1':
+    if num == '1':
         text = user_input()
-    case '2':
-        filename = input("Введите URL: ")
-        text = web_page_by_url(filename)
-    case '3':
+
+    elif num == '2':
         filename = input("Введите имя файла: ")
         text = load_file(filename)
-    case _:
-        text = ''
+    else:
         print("Ошибка - выбранного варианта нет в перечне!")
 
-if text:
+    if not text:
+        print("Нечего обрабатывать!")
+        return
     tokens = tokenize(text)
-    for token_type, value in tokens:
-        print(f"{token_type:20} -> {value}")
 
     correct, message = correct_expression(tokens)
     print(message)
+
+    show_tokens = input("Показывать токены? (y/n): ").lower() == 'y'
+    if show_tokens:
+        for token_type, value in tokens:
+            print(f"{token_type:20} -> {value}")
+
+if __name__ == "__main__":
+    main()
